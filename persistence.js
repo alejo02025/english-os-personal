@@ -4,6 +4,7 @@ const STUDY_KEYS=[
   'english-os-v1',
   'english-os-foundations-a1a2',
   'english-os-foundation-writing',
+  'english-os-foundation-drafts',
   'english-os-words',
   'english-os-roadmap-v2'
 ];
