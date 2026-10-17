@@ -11,6 +11,7 @@ const lessons=[
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const b=(en,es)=>'<span class="pair"><span>'+esc(en)+'</span><small>'+esc(es)+'</small></span>';
 export const foundationTotal=()=>lessons.length;
+export function foundationNext(){const i=lessons.findIndex((_,j)=>!getDone().includes(j));return i<0?null:{index:i,title:lessons[i].title,es:lessons[i].es}}
 export function foundationCompleted(){try{return JSON.parse(localStorage.getItem(key)||'[]').filter(n=>Number.isInteger(n)&&n>=0&&n<lessons.length).length}catch{return 0}}
 function getDone(){try{return JSON.parse(localStorage.getItem(key)||'[]')}catch{return []}}
 function mark(i){const d=getDone();if(!d.includes(i))d.push(i);localStorage.setItem(key,JSON.stringify(d))}
