@@ -70,7 +70,7 @@
   .sidebar .nav .nav-copy { font-size:9px; line-height:1.1; text-align:center; white-space:nowrap; align-items:center; }
   .sidebar .nav .nav-es { display:none!important; }
   .mobile-profile-access { cursor:pointer; border:0; }
-  .logout { display:none!important; }
+  .logout { display:block!important; position:static!important; width:max-content; max-width:calc(100% - 34px); margin:16px 17px calc(92px + env(safe-area-inset-bottom,0px)) auto!important; padding:9px 12px; font-size:11px; box-shadow:none; }
   .more-menu { display:grid; gap:10px; }
   .more-item { display:flex; justify-content:space-between; align-items:center; width:100%; border:1px solid #e6e5f0; background:#fff; border-radius:15px; padding:16px; color:#262747; font-weight:800; text-align:left; }
   .more-item small { display:block; color:#9395ad; font-size:11px; font-weight:500; margin-top:3px; }
@@ -87,4 +87,13 @@
   .top .date { font-size:10px; }
   .sidebar .nav .nav-copy { font-size:9px; }
   .install-app-button { padding:5px 7px; }
+}
+
+@media (max-width:760px) {
+  .sidebar .nav button { overflow:hidden; }
+  .sidebar .nav .nav-copy { max-width:100%; overflow:hidden; text-overflow:ellipsis; }
+  .top .date { overflow:hidden; text-overflow:ellipsis; }
+  .hero.simplified-hero { margin-bottom:0; }
+  .hero.simplified-hero .hero-content { overflow-wrap:break-word; }
+  .panel,.unit,.lesson { max-width:100%; min-width:0; }
 }
