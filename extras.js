@@ -31,6 +31,19 @@ const questionTranslations=[
 'Hudson es un fabricante de equipaje premium que enfrenta competencia más barata. Recomendá dos estrategias y explicá por qué en al menos tres oraciones.',
 '¿Qué oración contrasta correctamente una actividad habitual con una situación temporal?'
 ];
+
+const optionSpanish={
+1:['Fidelidad de marca','Extensión de marca','Emplazamiento de producto'],
+2:['Reconocimiento de marca','Cuota de mercado','Ciclo de vida del producto'],
+3:['Un cambio temporal de propietarios','Una empresa y un nuevo producto','Una queja por un vuelo retrasado'],
+4:['Está cerrando la tienda en línea','Está abriendo una tienda física','Está dejando de fabricar mochilas'],
+5:['Nuestro banco suele estar abriendo a las nueve.','Nuestro banco abre habitualmente a las nueve.','Nuestro banco abrir habitualmente a las nueve.'],
+6:['El equipo está desarrollando un nuevo producto este mes.','El equipo desarrolla un nuevo producto todos los meses.','El equipo desarrollando un nuevo producto este mes.'],
+7:['Estás equivocado.','¿Cuál es tu opinión sobre esto?','Esto tiene que terminar ahora.'],
+9:['Habitualmente estamos vendiendo bolsos, pero ahora lanzamos un modelo.','Habitualmente vendemos bolsos, pero ahora estamos lanzando un modelo.','Habitualmente vendiendo bolsos, pero ahora lanzamos un modelo.']
+};
+export function optionTranslation(i,j){return optionSpanish[i]?.[j]||''}
+
 const DB='english-os-pdf-library';
 function db(){return new Promise((res,rej)=>{const r=indexedDB.open(DB,1);r.onupgradeneeded=()=>r.result.createObjectStore('files',{keyPath:'id'});r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
 async function stored(mode='readonly',fn){const d=await db();return new Promise((res,rej)=>{const t=d.transaction('files',mode),s=t.objectStore('files'),q=fn(s);q.onsuccess=()=>res(q.result);q.onerror=()=>rej(q.error);t.oncomplete=()=>d.close()})}
