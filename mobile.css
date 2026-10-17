@@ -1,0 +1,90 @@
+/* English OS: mobile-first refinements. Loaded after styles.css. */
+@media (max-width: 760px) {
+  html,body { width:100%; max-width:100%; overflow-x:hidden; }
+  body { font-size:14px; }
+  .layout { display:block; min-height:100dvh; }
+  .sidebar {
+    position:relative; top:auto; height:auto; min-height:0;
+    padding:calc(env(safe-area-inset-top, 0px) + 11px) 18px 12px;
+    display:block; background:#252445;
+  }
+  .sidebar .brand { padding:0; font-size:18px; gap:9px; line-height:1.2; }
+  .sidebar .brand-symbol { width:33px; height:33px; flex:none; }
+  .sidebar .sidebottom { display:none; }
+  .main { width:100%; max-width:100%; min-width:0; padding:20px 17px calc(94px + env(safe-area-inset-bottom, 0px)); }
+  .top { gap:8px; margin-bottom:23px; align-items:center; }
+  .top .date { font-size:11px; white-space:nowrap; }
+  .top-actions { gap:8px; }
+  .install-app-button { padding:6px 9px; font-size:11px; border-radius:10px; }
+  .install-app-button small { font-size:9px; }
+  .avatar { width:32px; height:32px; font-size:11px; }
+  .eyebrow { font-size:10px; letter-spacing:1.1px; line-height:1.5; }
+  .headline { font-size:clamp(26px,7.3vw,33px)!important; line-height:1.17!important; letter-spacing:-.9px!important; margin:8px 0 10px; }
+  .headline .inline-es { display:block; margin:6px 0 0; font-size:12px; }
+  .lead,.hero-lead { font-size:14px!important; line-height:1.48; margin:0 0 17px; max-width:100%; }
+  .lead .inline-es { display:block; font-size:11px; margin:5px 0 0; line-height:1.45; }
+  .hero.simplified-hero {
+    display:block; min-height:0!important; padding:24px 21px!important;
+    border-radius:18px; box-shadow:0 10px 24px #4b3fc91b;
+  }
+  .simplified-hero .hero-content { max-width:100%; }
+  .simplified-hero .eyebrow { font-size:10px; letter-spacing:1px; }
+  .simplified-hero .step-count { margin:11px 0 7px; font-size:11px; }
+  .simplified-hero h2 { font-size:clamp(26px,7.2vw,32px)!important; line-height:1.13!important; margin:10px 0 10px; letter-spacing:-.65px!important; }
+  .simplified-hero h2 .inline-es { display:block; margin:5px 0 0; font-size:12px; }
+  .simplified-hero .sub { font-size:13px; line-height:1.45; margin:0 0 18px; }
+  .simplified-hero .sub .inline-es { font-size:11px; margin-top:5px; line-height:1.45; }
+  .simplified-hero .btn { display:flex; width:100%; min-height:48px; justify-content:center; gap:7px; padding:12px 10px; font-size:14px; }
+  .simplified-hero .btn small { font-size:11px; }
+  .hero-emblem { display:none; }
+  .sectionhead { flex-wrap:wrap; gap:8px; margin:24px 0 12px; align-items:center; }
+  .sectionhead h2 { font-size:17px; }
+  .how-grid,.path-preview,.grid2,.cardgrid { grid-template-columns:1fr; gap:10px; }
+  .how-step { min-height:0; padding:14px 16px; }
+  .how-step>span { margin-bottom:7px; }
+  .path-preview>div { padding:14px; }
+  .statrow { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+  .stat { min-width:0; padding:13px; }
+  .stat strong { font-size:23px; }
+  .panel { padding:16px; }
+  .unit { min-height:145px; padding:17px; }
+  .foundation-banner { padding:19px; }
+  .foundation-view { width:100%; }
+  .foundation-panel { border-radius:16px; }
+  .f-block { padding:18px 16px; grid-template-columns:29px minmax(0,1fr); gap:9px; }
+  .foundation-title { font-size:28px; }
+  .sidebar .nav {
+    display:grid!important; position:fixed!important; top:auto!important;
+    bottom:0; left:0; right:0; width:100%; z-index:40;
+    grid-template-columns:repeat(5,minmax(0,1fr)); gap:3px;
+    padding:8px 7px calc(env(safe-area-inset-bottom,0px) + 9px);
+    background:#252445; box-shadow:0 -5px 22px #13112c25;
+    border-top:1px solid #ffffff1c; overflow:visible;
+  }
+  .sidebar .nav button {
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    width:100%; min-width:0; max-width:none; min-height:48px;
+    padding:6px 2px; margin:0; gap:4px; border-radius:10px; white-space:normal;
+  }
+  .sidebar .nav .ico { min-width:0; font-size:19px; line-height:1; }
+  .sidebar .nav .nav-copy { font-size:10px; line-height:1.1; text-align:center; white-space:nowrap; align-items:center; }
+  .sidebar .nav .nav-es { display:none!important; }
+  .mobile-profile-access { cursor:pointer; border:0; }
+  .logout { display:none!important; }
+  .more-menu { display:grid; gap:10px; }
+  .more-item { display:flex; justify-content:space-between; align-items:center; width:100%; border:1px solid #e6e5f0; background:#fff; border-radius:15px; padding:16px; color:#262747; font-weight:800; text-align:left; }
+  .more-item small { display:block; color:#9395ad; font-size:11px; font-weight:500; margin-top:3px; }
+  .more-item .more-arrow { color:#6453dd; font-size:20px; }
+  .more-danger { color:#85475c; }
+  .backup-actions { display:grid; gap:8px; }
+  .backup-actions .btn { width:100%; justify-content:center; }
+}
+@media (display-mode: standalone) {
+  .install-app-button { display:none; }
+}
+@media (max-width: 360px) {
+  .main { padding-left:14px; padding-right:14px; }
+  .top .date { font-size:10px; }
+  .sidebar .nav .nav-copy { font-size:9px; }
+  .install-app-button { padding:5px 7px; }
+}
