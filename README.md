@@ -28,9 +28,24 @@ That dictionary is an external reference, **not** an integrated translation API.
 
 Import personal text-selectable PDFs (up to 35 MB and 250 pages). Extract text locally using pdf.js, navigate by page, search passages, identify recurring terms, display source excerpts and write persistent notes. Local page analysis uses **literal extracted text and simple frequency analysis, not AI comprehension**. Image-only/scanned PDFs require OCR and are unsupported. This version is not a full conversational PDF assistant.
 
-## Privacy and continuity
+## Install English OS as an app (PWA)
 
-The app has a browser-local email/password profile gate. **This is not server-based secure authentication** and does not restrict access to the underlying public website and source. Study progress, vocabulary and PDFs stay in browser-local storage. JSON export from Progress includes the original Unit 1 exercise history, new foundations and vocabulary; it does not export PDFs. Export a backup periodically.
+The public website includes an installable Web App Manifest, Android/desktop app icons (192 and 512 px), an iOS home-screen icon, service worker caching, and mobile bottom navigation. An **Install / Instalar app** button shows the native installation prompt if available; otherwise it explains how to add the site to the home screen.
+
+- Android/desktop Chrome and Edge: open the site and choose **Install app**.
+- iPhone/iPad: open in **Safari → Share → Add to Home Screen**.
+- The primary app shell and previously opened lessons can be accessible offline after resources have been cached; PDF import relies on PDF.js loaded externally on first use. An internet connection is needed for the external dictionary.
+- **Installation is not a cross-device sync mechanism.** An iOS home-screen app can also use storage separate from Safari; export from one installation and import into the other.
+
+## Privacy, autosave and recovery
+
+The email and password screen is a **local browser profile**, not a secure cloud account. No server-side login, account recovery, cross-device synchronization, or remote backup is provided. The code and website are public; password security is limited to a client-side local verifier.
+
+Study activity, answered exercises, unfinished writing drafts and saved vocabulary are stored in localStorage and mirrored in IndexedDB under the local profile email where available. PDF extracted text and notes live in a separate IndexedDB database; notes autosave when typed. Sign-out **does not delete** study data. Returning with the same email/password in the same browser should restore it.
+
+In **Progress → Export backup**, download a JSON backup with the current learning state, vocabulary, extracted PDF text and PDF notes. **Restore backup** accepts the same format and verifies the local profile email. The backup contains the **extracted PDF text**, not the original uploaded PDF binaries. Keep your original PDFs separately. Export periodically, especially before changing browsers or installing the app on iPhone.
+
+Clearing browser storage, using private browsing, device loss, or uninstalling a web app may erase the local copy. No local-only implementation can guarantee synchronization simply by signing in with an email from another device. Reliable cross-device sign-in needs explicit opt-in to external synchronized storage.
 
 ## Deployment
 
