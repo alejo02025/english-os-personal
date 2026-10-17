@@ -1,0 +1,30 @@
+{
+  "name": "English OS — My learning space",
+  "short_name": "English OS",
+  "description": "Study English step by step. Estudiá inglés paso a paso.",
+  "lang": "en",
+  "start_url": "/english-os-personal/",
+  "scope": "/english-os-personal/",
+  "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "orientation": "any",
+  "background_color": "#f8f8ff",
+  "theme_color": "#252445",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}
