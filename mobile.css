@@ -97,3 +97,14 @@
   .hero.simplified-hero .hero-content { overflow-wrap:break-word; }
   .panel,.unit,.lesson { max-width:100%; min-width:0; }
 }
+
+@media (max-width:760px){
+  .sidebar .nav button:nth-child(4) .nav-copy,
+  .sidebar .nav button:nth-child(5) .nav-copy,
+  .sidebar .nav button:nth-child(6) .nav-copy { font-size:0; }
+  .sidebar .nav button:nth-child(4) .nav-copy::after { content:"Words";font-size:10px; }
+  .sidebar .nav button:nth-child(5) .nav-copy::after { content:"PDF";font-size:10px; }
+  .sidebar .nav button:nth-child(6) .nav-copy::after { content:"Stats";font-size:10px; }
+  .hero .btn, .f-submit, .f-option { touch-action:manipulation; }
+  .headline .inline-es, .lead .inline-es { color:#888da6!important; }
+}
