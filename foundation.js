@@ -1,3 +1,4 @@
+import {persistStudyKey} from './persistence.js';
 const key='english-os-foundations-a1a2';
 const lessons=[
 {title:'I am / You are',es:'Soy / Sos',goal:'Introduce yourself.',goalEs:'Aprender a presentarte.',why:'You need this structure to say who you are.',whyEs:'Es la base para hablar de vos mismo.',rule:'I am · You are · She is',ruleEs:'Con I usamos am; con you, are; con he/she, is.',example:'I am a student.',exampleEs:'Soy estudiante.',q:'Which sentence is correct?',qEs:'¿Cuál oración es correcta?',choices:['I is a student.','I am a student.','I are a student.'],answer:1,explain:'Use am after I.',explainEs:'Después de I usamos am.'},
@@ -14,7 +15,7 @@ export const foundationTotal=()=>lessons.length;
 export function foundationNext(){const i=lessons.findIndex((_,j)=>!getDone().includes(j));return i<0?null:{index:i,title:lessons[i].title,es:lessons[i].es}}
 export function foundationCompleted(){try{return JSON.parse(localStorage.getItem(key)||'[]').filter(n=>Number.isInteger(n)&&n>=0&&n<lessons.length).length}catch{return 0}}
 function getDone(){try{return JSON.parse(localStorage.getItem(key)||'[]')}catch{return []}}
-function mark(i){const d=getDone();if(!d.includes(i))d.push(i);localStorage.setItem(key,JSON.stringify(d))}
+function mark(i){const d=getDone();if(!d.includes(i))d.push(i);persistStudyKey(key,JSON.stringify(d))}
 export function renderFoundation(shell,onDone,goCourse,requested){
 let idx=Number.isInteger(requested)?requested:lessons.findIndex((x,i)=>!getDone().includes(i));if(idx<0)idx=0;
 let e=lessons[idx],selection=null,readTranscript=false;
@@ -26,7 +27,7 @@ document.querySelector('#foundation-transcript')?.addEventListener('click',()=>{
 document.querySelector('#foundation-check').onclick=()=>{
 let correct=e.kind==='write'?(document.querySelector('#foundation-write').value.trim().length>=30):selection===e.answer;
 const el=document.querySelector('#foundation-feedback');if(!correct){el.innerHTML='<div class="f-result retry">'+b('Try again.','Intentá de nuevo.')+'<p>'+b(e.kind==='write'?'Write at least two short sentences.':'Read the example and choose again.',e.kind==='write'?'Escribí por lo menos dos oraciones cortas.':'Volvé a mirar el ejemplo y elegí otra opción.')+'</p></div>';return}
-mark(idx);if(e.kind==='write'){const draft=document.querySelector('#foundation-write').value.trim();localStorage.setItem('english-os-foundation-writing',draft)}
+mark(idx);if(e.kind==='write'){const draft=document.querySelector('#foundation-write').value.trim();persistStudyKey('english-os-foundation-writing',draft)}
 el.innerHTML='<div class="f-result correct"><strong>'+b('Good work!','¡Bien hecho!')+'</strong><p>'+b(e.kind==='write'?'Your writing is saved, but has not been corrected automatically.':e.explain,e.kind==='write'?'Tu texto se guardó, pero todavía no fue corregido automáticamente.':e.explainEs)+'</p>'+(e.kind==='write'?'<p>'+b('Example: '+e.sample,'Ejemplo de referencia, no corrección.')+'</p>':'')+'</div><button id="foundation-next" class="f-submit">'+b(idx===lessons.length-1?'Go to Unit 01 — Brands':'Next lesson',idx===lessons.length-1?'Ir a la unidad 01 — Marcas':'Siguiente lección')+' →</button>';
 document.querySelector('#foundation-next').onclick=()=>{if(idx<lessons.length-1)renderFoundation(shell,onDone,goCourse,idx+1);else onDone()};
 };
