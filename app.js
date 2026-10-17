@@ -42,4 +42,5 @@ function complete(i){if(!state.completed.includes(i))state.completed.push(i);con
 function showFeedback(ok,msg,advance=false){let el=$('#feedback');el.innerHTML=`<div class="feedback ${ok?'':'wrong'}">${escapeHTML(msg)}</div>${advance?`<div class="formrow"><button class="btn secondary" id="nextactivity">Next activity →</button><button class="btn ghost" id="overview">Back to course</button></div>`:''}`;if(advance){$('#nextactivity').onclick=()=>{let n=next();if(n<0)n=(activeExercise+1)%exercises.length;openExercise(n)};$('#overview').onclick=()=>go('Course')}}
 function bindLinks(){document.querySelectorAll('[data-ex]').forEach(b=>b.onclick=()=>openExercise(Number(b.dataset.ex)));document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go))}
 function render(){if(page==='Today')today();else if(page==='Course')course();else if(page==='Practice')activeExercise===null?practice():exerciseScreen();else if(page==='Library')library();else if(page==='Vocabulary')renderVocabulary(shell);else if(page==='PDF Studio')renderPdf(shell);else stats()}
+installDictionary();
 render();
